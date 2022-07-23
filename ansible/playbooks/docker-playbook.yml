@@ -1,0 +1,11 @@
+- name: DockerInstall
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Build Docker image from Dockerfile
+      shell: docker build -t centos /home/siemenstester/
+    - name: Running the container
+      shell: docker run -it --name centos -v /home/siemenstester/code:/code centos GO
+      register: command_output
+    - debug:
+        var: command_output.stdout_lines

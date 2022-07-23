@@ -1,0 +1,2 @@
+[siemens]
+3.3.3.3 ansible_ssh_user=siemenstester

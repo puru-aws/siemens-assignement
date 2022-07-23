@@ -1,0 +1,17 @@
+- name: DockerInstall
+  hosts: webserver
+  become: yes
+  tasks:
+    - name: Install docker.
+      package:
+        name: docker.io
+        state: present
+    - name: Start docker service
+      service:
+        name: docker
+        state: started
+        enabled: yes
+    - name: Install NVIDIA driver.
+      package:
+        name: nvidia-driver-470
+        state: present
