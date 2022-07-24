@@ -7,11 +7,12 @@ We would like to run some C++ and Go (Golang) experiment in the cloud.
 We are running the experiment on a Ubuntu host, in a CentOS container. The application may require hardware accelerated graphics support (VGA passthrough) so a graphics driver needs to be installed on the host.
 ```
 
-## Getting started
+## Pre-requisites
 
 - Install and update Python if its not already present.
 - Install terraform.
 - Active AWS Account with AWS CLI installed and confgiured.
+- A VPC and a public subnet to deploy EC2s
 
 ## Technology stack
 
@@ -48,7 +49,17 @@ terraform init
 terraform apply -var-file="dev.tfvars"
 ```
 
-Step 3: Deploy Siemens EC2 from terraform using below commands:
+Step 3: Login to Ansible host with 'ansible' user using the ec2 key pair or EC2 session manager.
+
+Step 4: Create new ssh key pair for ansible connection. Use below commands:
+
+cd ~
+shh-keygen -t rsa  
+cat .ssh/id_rsa.pub
+
+Copy this ssh key and update the siemens-ec2/init.sh
+
+Step 5: Deploy Siemens EC2 from terraform using below commands:
 
 ```
 cd siemens-ec2/
@@ -56,15 +67,11 @@ terraform init
 terraform apply -var-file="dev.tfvars"
 ```
 
-Step 4: Login to Ansible host using the SSH key or EC2 session manager.
-
-Step 5: Change the user to 'ansible' and create ssh key pairs for Ansible usage and update the autorized_keys for the user 'siemenstester' in siemens-ec2 server.
-
-Step 6: Create an inventory file similar to the one present in ansible/inventory by logging into Ansible server with the user ansible.
+Step 6: On Ansible host create an inventory file similar to the one present in ansible/inventory by logging into Ansible server with the user 'ansible'.
 
 Step 7: You can find the playbooks present in /home/ansible/playbooks
 
-Step 8: To install docker and NVIDIA on to ec2 server you can run below command:
+Step 8: To install docker and NVIDIA drivers on to ec2 server you can run below command:
 
 ```
 cd /home/ansible/playbooks

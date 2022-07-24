@@ -14,9 +14,10 @@ echo "siemenstester  ALL=(ALL) NOPASSWD:ALL" | sudo tee /etc/sudoers.d/siemenste
 sudo mkdir -p /home/siemenstester/.ssh
 sudo chmod 700 /home/siemenstester/.ssh
 sudo touch /home/siemenstester/.ssh/authorized_keys
-#sudo cat "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQC+czNGW/qwCPng3w4Lsq1rW9417MGSBbozuIAJwftp2EBrBKAHGfmGx8UdfQ5Gjusj6u2HYa08TJK8n3n0h+x0vJ/vOC91CbRvZYVdo9TYklS5lGYHTAYrt29pzOWjLpM2o7bozDzU9YYr1+uAfPYmsmMlGrKFHDJp8A+8Zz4gpAR1NRCdMVnuNKlfUlQwry41itW8SDOfcWeOETIirnQ8XW9SsQvliN1uIeWdtDQeldRX8x3Jvlxm1TUBKi07DoL943Gp0I3/pyDT0wcDFajhAkVWQyXBkxKDpsSnrT2bPxkUcDIXAlXPpi6/u4w8/xKh2SkWdy7umQ0esqFk7ZoRDHYtfSl05TkvHCtvpQdB347T2RqhXQ/0upR9s/fufbmNYadcNlzqpKnIzcJ/0SPritKdZALDzqHWTe+DBvLuo3cwgiJa4j7uEVD/T4eX51iHtdIAqvv4Dh8WtW7P7ABu+bV0c6ofS+OpEeVe87IW9Ip8hjnqsTi7ILh5pjWZRyM= prushok@88665a1fd6b2.ant.amazon.com" > /home/siemenstester/.ssh/authorized_keys
+sudo cat "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDTDh6N3H9v/dHb3I1ue7K7f+P6IIQhl5t12uaZcCJ77p5o/qe+za7MKzyh86s2ciGaKUa92M7KAhyRxa93HgdFfC9oY5NiFixxClsc+SCyyhw7o/NHs6iL+RP2bpAhHtcicY8F+6sBPb0NmmM5tn14hPEwUtXHGlG4SwiGe3hfPFKY+0top42XHXZcrdc1xQCRyI52XVE7vlZ2JFAku7DNQ+S+jzbhiC1HqfXCDCqlpn4iWQtHkutPWMwNpoBDRFXRzXhpm+e28kq4y+KqvouK9vzoTJWXRxiOWoYQMZL/QUviokIHL9CsLXuMTNZeDgVdCu+HHGblprFKfnWA6JmHZqC4vc+4bI70go59zNwG0kEh9cOw7Re8lfQ4uD+vY7jim8G58udyvh+3VltM6ce0vn8DmgejHxexRD+I6XfaANhJu9GfogHiqMbZPFNBwKE9aru9I+U2E7+aBfHXg/fawyk5DaQOuU5vcfABvfS7nEBJP/Ba9tot0ZESLSjYAQc= ansible@ip-10-0-1-233" >> /home/siemenstester/.ssh/authorized_keys
 sudo chmod 600 /home/siemenstester/.ssh/authorized_keys
 sudo chown -R siemenstester /home/siemenstester/.ssh
 sudo usermod --shell /bin/bash siemenstester
 
 aws s3 sync s3://siemens-assignement/ /home/siemenstester/
+sudo chown -R siemenstester /home/siemenstester/

@@ -1,4 +1,4 @@
-- name: DockerInstall
+- name: DockerBuild
   hosts: webserver
   become: yes
   tasks:

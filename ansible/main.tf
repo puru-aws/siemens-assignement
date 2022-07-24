@@ -95,6 +95,4 @@ output "ami_used" {
   value = "AMI with latest Ubuntu LTS : ${data.aws_ami.latest_ubuntu.id}"
 }
 
-output "instance_type" {
-  value = "Instance type that supports single Tesla V100 GPU : ${aws_instance.app.instance_type} "
-}
+

@@ -90,3 +90,6 @@ resource "aws_s3_bucket_object" "object" {
 output "public_ip" {
   value = aws_instance.app.public_ip
 }
+output "instance_type" {
+  value = "Instance type that supports single Tesla V100 GPU : ${aws_instance.app.instance_type} "
+}
