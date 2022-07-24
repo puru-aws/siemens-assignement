@@ -25,3 +25,9 @@ variable "app_port" {
   description = "Port on which application listens"
   default     = "36666"
 }
+
+variable "key_pair" {
+  type        = string
+  description = "EC2 SSH key pair name"
+  default     = "us_nverginia"
+}

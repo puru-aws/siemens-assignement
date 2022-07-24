@@ -46,19 +46,8 @@ resource "aws_instance" "app" {
   vpc_security_group_ids      = [aws_security_group.app_sg.id]
   associate_public_ip_address = true
   user_data                   = file("init.sh")
-  key_name                    = "us_nverginia"
+  key_name                    = var.key_pair
   iam_instance_profile        = aws_iam_instance_profile.ec2_instance_profile1.id
-  #provisioner "file" {
-  #  source      = "./docker/*"
-  #  destination = "/home/siemenstester/"
-  #}
-  #connection {
-  #  type        = "ssh"
-  #  user        = "ubuntu"
-  #  private_key = file("/Users/prushok/Downloads/us_nverginia.pem")
-  #  host        = self.public_ip
-  #}
-
   tags = {
     Name = "${var.name}"
   }

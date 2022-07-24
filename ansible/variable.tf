@@ -17,3 +17,8 @@ variable "ec2_subnet" {
   description = "Public subnet to deploy EC2"
   default     = "subnet-05971958d7636b9ea"
 }
+variable "key_pair" {
+  type        = string
+  description = "EC2 SSH key pair name"
+  default     = "us_nverginia"
+}
