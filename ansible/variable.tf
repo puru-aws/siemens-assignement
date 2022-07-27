@@ -22,3 +22,7 @@ variable "key_pair" {
   description = "EC2 SSH key pair name"
   default     = "us_nverginia"
 }
+variable "bucket_name" {
+  type        = string
+  description = "S3 bucket to store playbooks and code"
+}

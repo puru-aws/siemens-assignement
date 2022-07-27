@@ -80,7 +80,7 @@ resource "aws_iam_instance_profile" "ec2_instance_profile1" {
   role = aws_iam_role.ec2_s3_role_siemens.name
 }
 resource "aws_s3_bucket_object" "object" {
-  bucket   = "siemens-assignement"
+  bucket   = var.bucket_name
   for_each = fileset("../docker/", "**")
   key      = each.value
   source   = "../docker/${each.value}"

@@ -49,7 +49,7 @@ resource "aws_instance" "app" {
 }
 
 resource "aws_s3_bucket" "s3_bucket" {
-  bucket = "siemens-assignement"
+  bucket = var.bucket_name
   acl    = "private"
 }
 
@@ -78,11 +78,11 @@ resource "aws_iam_instance_profile" "ec2_instance_profile" {
   role = aws_iam_role.ec2_s3_role.name
 }
 
-resource "aws_s3_bucket_object" "object" {
+resource "aws_s3_bucket_object" "object_upload" {
   bucket   = aws_s3_bucket.s3_bucket.bucket
-  for_each = fileset("/Users/prushok/Documents/siemens-assignement/ansible/playbooks", "**")
-  key      = each.value
-  source   = "/Users/prushok/Documents/siemens-assignement/ansible/playbooks/${each.value}"
+  for_each = fileset("./playbooks", "**")
+  key      = "/playbooks/${each.value}"
+  source   = "./playbooks/${each.value}"
 }
 
 output "public_ip" {
@@ -91,8 +91,6 @@ output "public_ip" {
 output "s3_bucket" {
   value = aws_s3_bucket.s3_bucket.bucket
 }
-output "ami_used" {
-  value = "AMI with latest Ubuntu LTS : ${data.aws_ami.latest_ubuntu.id}"
-}
+
 
 

@@ -15,7 +15,7 @@ sudo chmod 700 /home/ansible/.ssh
 sudo chmod 600 /home/ansible/.ssh/authorized_keys
 sudo chown -R ansible /home/ansible/.ssh
 sudo usermod --shell /bin/bash ansible
-aws s3 sync s3://siemens-assignement/playbooks/ /home/ansible/playbooks/
+aws s3 sync s3://siemens-123546231/playbooks/ /home/ansible/playbooks/
 sudo chown -R ansible:ansible /home/ansible
 
 #Installing Ansible
